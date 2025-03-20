@@ -30,7 +30,7 @@ export default function AdminPage() {
       } else {
         setError('Ошибка при загрузке данных');
       }
-    } catch (error) {
+    } catch {
       setError('Ошибка при загрузке данных');
     } finally {
       setLoading(false);
@@ -49,8 +49,8 @@ export default function AdminPage() {
       if (response.ok) {
         await fetchRegistrations();
       }
-    } catch (error) {
-      console.error('Error confirming payment:', error);
+    } catch {
+      console.error('Ошибка при подтверждении оплаты');
       alert('Ошибка при подтверждении оплаты');
     }
   };
@@ -83,8 +83,8 @@ export default function AdminPage() {
       } else {
         throw new Error('Failed to send invitation');
       }
-    } catch (error) {
-      console.error('Error sending invitation:', error);
+    } catch {
+      console.error('Ошибка при отправке приглашения');
       alert('Ошибка при отправке приглашения');
     }
   };
