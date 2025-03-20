@@ -1,7 +1,18 @@
 import { NextResponse } from 'next/server';
 
+interface Registration {
+  id: number;
+  name: string;
+  email: string;
+  hasJBL: boolean;
+  drinkChoice: string;
+  timestamp: string;
+  paymentConfirmed: boolean;
+  invitationSent?: boolean;
+}
+
 // В реальном приложении здесь была бы база данных
-let registrations: any[] = [];
+let registrations: Registration[] = [];
 
 export async function GET() {
   return NextResponse.json(registrations);
@@ -9,7 +20,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const data = await request.json();
-  const newRegistration = {
+  const newRegistration: Registration = {
     ...data,
     id: Date.now(),
     timestamp: new Date().toISOString(),

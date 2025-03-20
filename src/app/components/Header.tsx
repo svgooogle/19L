@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 const Header = () => {
   return (
     <header className="bg-purple-600 text-white shadow-lg">
