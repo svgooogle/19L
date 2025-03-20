@@ -96,9 +96,13 @@ export default function AdminPage() {
   const getStats = () => {
     const confirmedRegistrations = registrations.filter(reg => reg.paymentConfirmed);
     const totalAmount = confirmedRegistrations.reduce((sum, reg) => sum + getPaymentAmount(reg.drinkChoice), 0);
+    const alcoholBudget = confirmedRegistrations
+      .filter(reg => reg.drinkChoice === 'common')
+      .length * 800;
     return {
       confirmedCount: confirmedRegistrations.length,
-      totalAmount
+      totalAmount,
+      alcoholBudget
     };
   };
 
@@ -112,7 +116,7 @@ export default function AdminPage() {
       <div className="container mx-auto px-4">
         <h1 className="text-3xl font-bold mb-8 text-center">Панель администратора</h1>
         
-        <div className="grid grid-cols-2 gap-4 mb-8 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <h3 className="text-lg font-medium text-gray-900 mb-2">Подтвержденных участников</h3>
             <p className="text-3xl font-bold text-purple-600">{stats.confirmedCount}</p>
@@ -120,6 +124,10 @@ export default function AdminPage() {
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <h3 className="text-lg font-medium text-gray-900 mb-2">Собрано денег</h3>
             <p className="text-3xl font-bold text-purple-600">{stats.totalAmount} ₽</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Бюджет на алкоголь</h3>
+            <p className="text-3xl font-bold text-purple-600">{stats.alcoholBudget} ₽</p>
           </div>
         </div>
 
