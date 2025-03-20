@@ -31,13 +31,17 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
-  const data = await request.json();
-  const index = registrations.findIndex(reg => reg.id === data.id);
-  if (index !== -1) {
-    registrations[index] = { ...registrations[index], ...data };
-    return NextResponse.json(registrations[index]);
+  try {
+    const data = await request.json();
+    const index = registrations.findIndex(reg => reg.id === data.id);
+    if (index !== -1) {
+      registrations[index] = { ...registrations[index], ...data };
+      return NextResponse.json(registrations[index]);
+    }
+    return NextResponse.json({ message: 'Registration not found' }, { status: 404 });
+  } catch {
+    return NextResponse.json({ message: 'Invalid request data' }, { status: 400 });
   }
-  return NextResponse.json({ error: 'Registration not found' }, { status: 404 });
 }
 
 // Добавляем функцию для очистки всех регистраций
