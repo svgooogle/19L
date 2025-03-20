@@ -46,12 +46,12 @@ const RegistrationForm = () => {
           <div className="max-w-md mx-auto bg-purple-50 rounded-lg shadow-lg p-6">
             {!paymentSent ? (
               <>
-                <h2 className="text-2xl font-bold text-center mb-6">Информация об оплате</h2>
+                <h2 className="text-2xl font-bold text-center mb-6 text-gray-900">Информация об оплате</h2>
                 <div className="space-y-4">
                   <div className="bg-white p-4 rounded-lg">
-                    <p className="text-lg font-semibold mb-2">Сумма к оплате: {getPaymentAmount()} ₽</p>
+                    <p className="text-lg font-semibold mb-2 text-gray-900">Сумма к оплате: {getPaymentAmount()} ₽</p>
                     <div className="space-y-2">
-                      <p className="font-medium">Реквизиты для перевода:</p>
+                      <p className="font-medium text-gray-900">Реквизиты для перевода:</p>
                       <p className="bg-white p-4 rounded border border-gray-200 text-gray-900 text-lg">
                         <span className="font-semibold block mb-2">+7 995 858 83 05</span>
                         <span className="block">Т-Банк</span>
@@ -60,7 +60,7 @@ const RegistrationForm = () => {
                     </div>
                   </div>
                   <div className="bg-purple-100 p-4 rounded-lg">
-                    <p className="text-sm">
+                    <p className="text-gray-900">
                       После оплаты мы отправим подтверждение на указанный email: <span className="font-medium">{formData.email}</span>
                     </p>
                   </div>
@@ -74,9 +74,9 @@ const RegistrationForm = () => {
               </>
             ) : (
               <div className="text-center space-y-4">
-                <h2 className="text-2xl font-bold mb-4">Спасибо!</h2>
+                <h2 className="text-2xl font-bold mb-4 text-gray-900">Спасибо!</h2>
                 <div className="bg-purple-100 p-6 rounded-lg">
-                  <p className="text-lg">
+                  <p className="text-lg text-gray-900">
                     Ожидайте, после подтверждения вы получите приглашение на E-Mail
                   </p>
                 </div>
@@ -95,7 +95,7 @@ const RegistrationForm = () => {
         <div className="max-w-md mx-auto bg-purple-50 rounded-lg shadow-lg p-6">
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-gray-900 mb-2 font-medium">
                 Имя
               </label>
               <input
@@ -103,13 +103,13 @@ const RegistrationForm = () => {
                 id="name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900"
                 required
               />
             </div>
             
             <div>
-              <label htmlFor="email" className="block text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-gray-900 mb-2 font-medium">
                 Email
               </label>
               <input
@@ -117,7 +117,7 @@ const RegistrationForm = () => {
                 id="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900"
                 required
               />
             </div>
@@ -130,13 +130,13 @@ const RegistrationForm = () => {
                 onChange={(e) => setFormData({ ...formData, hasJBL: e.target.checked })}
                 className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
               />
-              <label htmlFor="hasJBL" className="text-gray-700">
+              <label htmlFor="hasJBL" className="text-gray-900">
                 У меня есть колонка JBL с Party Connect
               </label>
             </div>
 
             <div className="space-y-2">
-              <label className="block text-gray-700 mb-2">
+              <label className="block text-gray-900 mb-2 font-medium">
                 Выберите вариант:
               </label>
               <div className="space-y-2">
