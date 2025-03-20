@@ -52,10 +52,10 @@ const RegistrationForm = () => {
                     <p className="text-lg font-semibold mb-2">Сумма к оплате: {getPaymentAmount()} ₽</p>
                     <div className="space-y-2">
                       <p className="font-medium">Реквизиты для перевода:</p>
-                      <p className="bg-gray-50 p-3 rounded">
-                        +7 995 858 83 05<br />
-                        Т-Банк<br />
-                        Тимофей К.
+                      <p className="bg-white p-4 rounded border border-gray-200 text-gray-900 text-lg">
+                        <span className="font-semibold block mb-2">+7 995 858 83 05</span>
+                        <span className="block">Т-Банк</span>
+                        <span className="block">Тимофей К.</span>
                       </p>
                     </div>
                   </div>
