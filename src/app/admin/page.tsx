@@ -93,13 +93,36 @@ export default function AdminPage() {
     return drinkChoice === 'common' ? 2800 : 2000;
   };
 
+  const getStats = () => {
+    const confirmedRegistrations = registrations.filter(reg => reg.paymentConfirmed);
+    const totalAmount = confirmedRegistrations.reduce((sum, reg) => sum + getPaymentAmount(reg.drinkChoice), 0);
+    return {
+      confirmedCount: confirmedRegistrations.length,
+      totalAmount
+    };
+  };
+
   if (loading) return <div className="p-8 text-center">Загрузка...</div>;
   if (error) return <div className="p-8 text-center text-red-600">{error}</div>;
+
+  const stats = getStats();
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
         <h1 className="text-3xl font-bold mb-8 text-center">Панель администратора</h1>
+        
+        <div className="grid grid-cols-2 gap-4 mb-8 max-w-2xl mx-auto">
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Подтвержденных участников</h3>
+            <p className="text-3xl font-bold text-purple-600">{stats.confirmedCount}</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Собрано денег</h3>
+            <p className="text-3xl font-bold text-purple-600">{stats.totalAmount} ₽</p>
+          </div>
+        </div>
+
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
